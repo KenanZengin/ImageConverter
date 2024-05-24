@@ -1,0 +1,164 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+input{
+    
+}
+
+
+
+
+html,body{
+    width: 100%;
+    height: 100%;
+    background-color: #F6F5F2;
+}
+
+.img_customization{
+    padding: 25px;
+    .img_customization_wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .img_area{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            .img_convert_options{
+                width: 500px;
+                max-width: 500px;
+                display: flex;
+                flex-direction: column;
+                gap: 30px;
+                .upload_file{
+                    label {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        margin-top: 15px;
+                        padding: 5px 15px;
+                        font-weight: 700;
+                        color: #000;
+                        width: max-content;
+                        cursor: pointer;
+                        .inputfile {
+                            width: 0.1px;
+                            height: 0.1px;
+                            opacity: 0;
+                            overflow: hidden;
+                            position: absolute;
+                            z-index: -1;
+                        }
+                        svg{
+                            color: #A87676;
+                        }
+                    }
+                    .upload{
+                        background-color: #A1DD70;
+                    }
+                    .noupload{
+                        background-color: #F0EBE3;
+                    }
+                    .inputfile:focus + label,
+                    .inputfile + label:hover {
+                        background-color: #A79277;
+                    }.inputfile + label {
+                        cursor: pointer; /* "hand" cursor */
+                    }
+                }
+                .resulation,.file_type,.aspect_ratio,.compression{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    p,span{
+                        padding: 5px;
+                        border-radius: 6px;
+                        display: inline-block;
+                    }
+                    input,span{
+                        cursor: pointer;
+                    }
+                    p{
+                        background-color: #F0EBE3;
+                        font-weight: 600;
+
+                    }
+                    span{
+                        background-color: #FFEFEF;
+                    }
+                    .custom_width,.custom_ratio{
+                        display: flex;
+                        gap: 10px;
+                        input{
+                            width: 50%;
+                            padding: 8px;
+                            outline: 0;
+                        }
+                        input[type="number"]:focus,input[type="number"]:focus-visible{
+                            border-color: #F3D0D7;
+                            border: 2px solid #F3D0D7;
+                        }
+                    }
+                    .custom_compression{
+                        input[type="range"]{
+                            accent-color: #776B5D;
+                        }
+                    }   
+                    
+                }
+                button{
+                    padding: 8px 0;
+                    outline: 0;
+                    font-weight: 700;
+                    border-radius: 50px;
+                    background-color: #C7B7A3;
+                    border: 1px solid #FFEFEF;
+                    cursor: pointer;
+
+                }
+            }
+            .imgs{
+                flex: 1;
+                text-align: center;
+
+                .imgs_area{
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 5px;
+                    justify-content: space-evenly;
+                    .img_content{
+                        h2{
+                            line-height: 3rem;
+                        }
+                        .content_info{
+                            display: flex;
+                            flex-direction: column;
+                            gap: 10px;
+                            .info{
+                                display: flex;
+                                flex-direction: column;
+                                gap: 7.5px;
+                                p{
+                                    background-color: #FFEFEF;
+                                    color: #000;
+                                    font-weight: 600;
+                                    padding: 5px;
+                                }
+                            }
+                        }
+                        img{
+                            width: 500px;
+                            max-width: 500px;
+                            max-height: 500px;
+                            height: 500px;
+                            object-fit: contain;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
