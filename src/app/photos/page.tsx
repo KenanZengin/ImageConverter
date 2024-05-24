@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Resizer from 'react-image-file-resizer';
 import { FaUpload,FaDownload  } from "react-icons/fa";
 import Link from 'next/link';
@@ -19,17 +19,46 @@ const IndexPage = () => {
   const [dimensions, setDimensions] = useState({ w: '', h: '' });
   const [customWidth, setCustomWidth] = useState('');
   const [customHeight, setCustomHeight] = useState('');
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState<any>(null);
   const [output, setOutput] = useState(null);
   const [outputName, setOutputName] = useState('');
   const [showImages, setShowImages] = useState(false);
-  const [fileSize, setFileSize] = useState(false); 
+  const [fileSize, setFileSize] = useState<any>(false); 
   const [originalImageURL, setOriginalImageURL] = useState<any>(null);
   const [processedSize, setProcessedSize] = useState<any>(null);
 
-  const handleFileChange = (event) => {
+
+  useEffect(()=>{
+    if(Number(params.get("id")) == 1){
+      const root = "/img/img1.jpg";
+      const test = async () => {
+        const response = await fetch(root);
+        const blob = await response.blob();
+        const file = new File([blob], "img1.jpg", { type: "image/jpeg" });
+        console.log(file);
+        
+        setFile(()=>file);
+
+        const sizeInMB = (file.size / 1024 / 1024).toFixed(2);
+        setFileSize(()=>sizeInMB);
+        setOriginalImageURL(()=>URL.createObjectURL(file));
+        const img = new Image();
+        console.log(img.width,img.height);
+        img.onload = () => {
+          setImgInfo(()=>({width:img.width,height:img.height}))
+        };
+        img.src = URL.createObjectURL(file)
+      }
+      test()
+    }
+  },[])
+
+
+  const handleFileChange = (event:any) => {
 
     const uploadedFile = event.target.files[0];
+    console.log( event.target.files[0]);
+    
     const sizeInMB = (uploadedFile.size / 1024 / 1024).toFixed(2);
     setFile(uploadedFile);
     setFileSize(()=>sizeInMB);
@@ -43,39 +72,45 @@ const IndexPage = () => {
   };
 
   const cropImage = () => {
-
+    
     let aspectRatioValue = dimensions.h ? `${dimensions.w}:${dimensions.h}` : aspectRatio;
     
-
-    if (!file) return;
+    if (!file){
+      console.log("olmuyor1");
+      return;
+    }
     
     const img = new Image();
 
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     if(aspectRatioValue == "No Change"){
-        img.onload = () => {
-            
-            const aspectRatio = imgInfo.height / imgInfo.width;
-            const newWidth = Math.round(resolution.height / aspectRatio);
-            canvas.height = resolution.height;
-            canvas.width =  newWidth;
-            console.log("canvas.height",canvas.height);
-            console.log(" canvas.width", canvas.width);
+      console.log("olmuyor2");
 
-            
-            ctx.drawImage(img, 0, 0, newWidth, canvas.height, );
+      img.onload = () => {
+          console.log("HELLO?");
+          
+          const aspectRatio = imgInfo.height / imgInfo.width;
+          console.log("aspectRatio",aspectRatio);
+          
+          const newWidth = Math.round(resolution.height / aspectRatio);
+          canvas.height = resolution.height;
+          canvas.width =  newWidth;
+          console.log("canvas.height",canvas.height);
+          console.log(" canvas.width", canvas.width);
 
-            canvas.toBlob((blob) => {
-                if(blob){
-                   
-                    processImage(blob,canvas.width,canvas.height);
-                }
-            }
-            , 'image/jpeg', compression / 100);
-        }
-        img.src = URL.createObjectURL(file);
-        return
+          
+          ctx.drawImage(img, 0, 0, newWidth, canvas.height, );
+
+          canvas.toBlob((blob) => {
+              if(blob){
+                processImage(blob,canvas.width,canvas.height);
+              }
+          }
+          , "image/jpeg", compression / 100);
+      }
+      img.src = URL.createObjectURL(file);
+      return
     }
     img.onload = () => {
         // Aspect ratio value and crop calculations
@@ -125,10 +160,11 @@ const IndexPage = () => {
            
             processImage(blob,kanvasx2,kanvasy);
           }
-        }, 'image/jpeg', compression / 100);
+        }, "image/jpeg", compression / 100);
     };
-      
-      img.src = URL.createObjectURL(file);
+    img.src = URL.createObjectURL(file);
+    console.log("olmuyor3");
+
   };
 
   const processImage = (blob,w,h) => {

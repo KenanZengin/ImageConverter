@@ -16,15 +16,79 @@ html,body{
     background-color: #F6F5F2;
 }
 
+.imgs{
+    .imgs_wrapper{
+        width: 1400px; 
+        max-width: 1400px;
+        margin: auto;
+        .custom_img_upload{
+            padding: 20px 0;
+            h1{
+                a{
+                    display: block;
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    color: #222831;
+                    font-weight: bold;
+                }
+            }
+            p{
+                color: #31363F;
+            }
+        }
+        .img_list{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            gap: 20px; /* Boşluklar eklemek için */
+            .img_content{
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                width: 500px;
+                max-width: 500px;
+                text-align: center;
+                img{
+                    object-fit: contain;
+                }
+                a{
+                    text-decoration: none;
+                    color: #000;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 5px;
+                    width: 100%;
+                    padding: 7.5px;
+                    border-radius: 4px;
+                    background-color: #DDDDDD;
+                }
+            }
+        }
+    }
+}
+
+
 .img_customization{
     padding: 25px;
     .img_customization_wrapper{
         display: flex;
         flex-direction: column;
         justify-content: center;
+        h1{
+            a{
+                display: inline-block;
+                text-decoration: none;
+                color: #222831;
+            }
+        }
         .img_area{
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
             gap: 25px;
             .img_convert_options{
                 width: 500px;
@@ -122,7 +186,6 @@ html,body{
             .imgs{
                 flex: 1;
                 text-align: center;
-
                 .imgs_area{
                     display: flex;
                     flex-wrap: wrap;
@@ -145,6 +208,18 @@ html,body{
                                     color: #000;
                                     font-weight: 600;
                                     padding: 5px;
+                                }
+                                button{
+                                    background-color: #DDDDDD;
+                                    padding: 7.5px;
+                                    text-align: center;
+                                    font-weight: bolder;
+                                    border: 1px solid #DDDDDD;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    gap: 5px;
+                                    cursor: pointer;
                                 }
                             }
                         }
