@@ -81,6 +81,7 @@ body{
                     max-width: 500px;
                     @media (max-width: 576px) {
                         max-width: 300px;
+                        width: 300px;
                     }
                 }
                 a{
