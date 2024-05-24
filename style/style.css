@@ -8,25 +8,44 @@ html,body{
     width: 100%;
     height: 100%;
     background-color: #F6F5F2;
+    @media (max-width: 576px) {
+        font-size: 15px;
+    }
 }
 
 .imgs{
+    width: 100%; 
+    max-width: 100%;
+    @media (max-width: 1024px) {
+        padding: 0 20px;
+    }
     .imgs_wrapper{
-        width: 1400px; 
-        max-width: 1400px;
+        width: 100%;
         margin: auto;
         .custom_img_upload{
             padding: 20px 0;
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+            margin: auto;
+            @media (max-width: 1280px) {
+                text-align: center;
+            }
             h1{
+                display: flex;
+                justify-content: center;
+                word-wrap: break-word;
                 a{
-                    display: block;
                     text-decoration: none;
                     display: flex;
+                    justify-content: center;
                     align-items: center;
                     gap: 10px;
                     color: #222831;
                     font-weight: bold;
-                }
+                    width:fit-content;
+                    word-wrap: break-word;
+                }   
             }
             p{
                 color: #31363F;
@@ -39,18 +58,22 @@ html,body{
             justify-content: space-evenly;
             row-gap: 50px;
             @media (max-width: 1280px) {
-                grid-template-columns: repeat(1,500px);
-
-              }
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
             .img_content{
                 display: flex;
                 flex-direction: column;
                 gap: 5px;
-                width: 500px;
+                width: 100%;
                 max-width: 500px;
                 text-align: center;
                 img{
                     object-fit: contain;
+                    width: 100%;
+                    max-width: 500px;
                 }
                 a{
                     text-decoration: none;
@@ -233,6 +256,12 @@ html,body{
                             max-width: 500px;
                             max-height: 500px;
                             height: 500px;
+                            @media (max-width: 576px) {
+                                width: 100%;
+                                max-width: 500px;
+                                max-height: 500px;
+                                height: 100%;
+                            }
                             object-fit: contain;
                         }
                     }
