@@ -25,7 +25,7 @@ const HomePage = () => {
           <div className="img_content">
             <Image src={img1} width={500} height={350} alt="randomImg" priority={true}  />
             <p>Original size: 3200 x 3000 </p>
-            <Link href={"/photos?id=1"}>
+            <Link href={"/photos?photoid=1"}>
               Go picture customization
               <FaArrowRightLong size={15} />
             </Link>
@@ -33,7 +33,7 @@ const HomePage = () => {
           <div className="img_content">
             <Image src={img2} width={500} height={350} alt="randomImg" priority={true} />
             <p>Original size: 640 x 960 </p>
-            <Link href={"/photos?id=2"}>
+            <Link href={"/photos?photoid=2"}>
               Go picture customization
               <FaArrowRightLong size={15}/>
             </Link>
@@ -41,7 +41,7 @@ const HomePage = () => {
           <div className="img_content">
             <Image src={img3} width={500} height={350} alt="randomImg" priority={false} />
             <p>Original size: 1000 x 667 </p>
-            <Link href={"/photos?id=3"}>
+            <Link href={"/photos?photoid=3"}>
               Go picture customization
               <FaArrowRightLong size={15}/>
             </Link>
@@ -49,7 +49,7 @@ const HomePage = () => {
           <div className="img_content">
             <Image src={img4} width={500} height={350} alt="randomImg" priority={false} />
             <p>Original size: 667 x 1000 </p>
-            <Link href={"/photos?id=4"}>
+            <Link href={"/photos?photoid=4"}>
               Go picture customization
               <FaArrowRightLong size={15}/>
             </Link>

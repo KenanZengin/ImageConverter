@@ -40,10 +40,14 @@ html,body{
         }
         .img_list{
             width: 100%;
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(2,500px);
             justify-content: space-evenly;
-            gap: 20px; /* Boşluklar eklemek için */
+            row-gap: 50px;
+            @media (max-width: 1280px) {
+                grid-template-columns: repeat(1,500px);
+
+              }
             .img_content{
                 display: flex;
                 flex-direction: column;
@@ -237,3 +241,7 @@ html,body{
     }
 }
 
+.select-b{
+    border: 2px solid rgb(100, 100, 111) !important;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
