@@ -101,22 +101,21 @@ const IndexPage = () => {
     if(aspectRatioValue == "No Change"){
 
       img.onload = () => {
-          
-          const aspectRatio = imgInfo.height / imgInfo.width;
-          const canvasX = Math.round(resolution.height / aspectRatio);
+        const aspectRatio = imgInfo.height / imgInfo.width;
+        const canvasX = Math.round(resolution.height / aspectRatio);
 
-          canvas.height = resolution.height;
-          const canvasY = canvas.height
-          canvas.width =  canvasX;
-          
-          ctx?.drawImage(img, 0, 0, canvasX, canvasY );
+        canvas.height = resolution.height;
+        const canvasY = canvas.height
+        canvas.width =  canvasX;
+        
+        ctx?.drawImage(img, 0, 0, canvasX, canvasY );
 
-          canvas.toBlob((blob) => {
-            if(blob){
-              processImage(blob,canvas.width,canvas.height);
-            }
+        canvas.toBlob((blob) => {
+          if(blob){
+            processImage(blob,canvas.width,canvas.height);
           }
-          , "image/jpeg", compression / 100);
+        }
+        , "image/jpeg", compression / 100);
       }
       img.src = URL.createObjectURL(file);
       
@@ -258,7 +257,7 @@ const IndexPage = () => {
 
   return (
     <div className="img_customization">
-        <div className="img_customization_wrapper">
+      <div className="img_customization_wrapper">
           <h1>
             <Link href={"/"}>
               Image Processor
@@ -267,94 +266,92 @@ const IndexPage = () => {
           <div className="img_area">
             <div className="img_convert_options">
               <div className='upload_file' >
-                  <label htmlFor="file" className={`${fileSize ? "upload" : "no_upload"}`}>
-                      <input type="file" name="file" id="file" onChange={handleFileChange} className='inputfile' />
-                      <FaUpload size={25} />
-                      Choose a file
-                  </label>
+                <label htmlFor="file" className={`${fileSize ? "upload" : "no_upload"}`}>
+                  <input type="file" name="file" id="file" onChange={handleFileChange} className='inputfile' />
+                  <FaUpload size={25} />
+                  Choose a file
+                </label>
               </div>
               <div className="resulation">
-                  <p>Resolution</p>
-                  <span 
-                    onClick={() => {setResolution({ width: 1280, height: 720 });setCustomWidth(()=>"");setCustomHeight(()=>"")}}
-                    className={`${resolution.width == 1280 && resolution.height == 720 ?  "select-b" : ""}`}
-                  >
-                    720p
-                  </span>
-                  <span 
-                    onClick={() => {setResolution({ width: 1920, height: 1080 });setCustomWidth(()=>"");setCustomHeight(()=>"")}} 
-                    className={`${resolution.width == 1920 && resolution.height == 1080 ?  "select-b" : ""}`}
-                  >
-                    1080p
-                  </span>
-                  <span 
-                    onClick={() => {setResolution({ width: 2560, height: 1440 });setCustomWidth(()=>"");setCustomHeight(()=>"")}} 
-                    className={`${resolution.width == 2560 && resolution.height == 1440 ?  "select-b" : ""}`}
-                  >
-                    2k
-                  </span>
-                  <span 
-                    onClick={() => {setResolution({ width: 3840, height: 2160 });setCustomWidth(()=>"");setCustomHeight(()=>"")}}
-                    className={`${resolution.width == 3840 && resolution.height == 2160 ?  "select-b" : ""}`}  
-                  >
-                    4k
-                  </span>
-                  <div className='custom_width'>
-                      <input
-                        type="number"
-                        min={0}
-                        placeholder="Custom Width"
-                        value={customWidth}
-                        onChange={handleCustomWidthChange}
-                        className={`${customWidth  ?  "select-b" : ""}`}
-                      />
-                      :
-                      <input
-                          min={0}
-                          type="number"
-                          placeholder="Custom Height"
-                          value={customHeight}
-                          onChange={handleCustomHeightChange}
-                          className={`${customHeight  ?  "select-b" : ""}`}
-                      />
-                  </div>
+                <p>Resolution</p>
+                <span 
+                  onClick={() => {setResolution({ width: 1280, height: 720 });setCustomWidth(()=>"");setCustomHeight(()=>"")}}
+                  className={`${resolution.width == 1280 && resolution.height == 720 ?  "select-b" : ""}`}
+                >
+                  720p
+                </span>
+                <span 
+                  onClick={() => {setResolution({ width: 1920, height: 1080 });setCustomWidth(()=>"");setCustomHeight(()=>"")}} 
+                  className={`${resolution.width == 1920 && resolution.height == 1080 ?  "select-b" : ""}`}
+                >
+                  1080p
+                </span>
+                <span 
+                  onClick={() => {setResolution({ width: 2560, height: 1440 });setCustomWidth(()=>"");setCustomHeight(()=>"")}} 
+                  className={`${resolution.width == 2560 && resolution.height == 1440 ?  "select-b" : ""}`}
+                >
+                  2k
+                </span>
+                <span 
+                  onClick={() => {setResolution({ width: 3840, height: 2160 });setCustomWidth(()=>"");setCustomHeight(()=>"")}}
+                  className={`${resolution.width == 3840 && resolution.height == 2160 ?  "select-b" : ""}`}  
+                >
+                  4k
+                </span>
+                <div className='custom_width'>
+                  <input
+                    type="number"
+                    min={0}
+                    placeholder="Custom Width"
+                    value={customWidth}
+                    onChange={handleCustomWidthChange}
+                    className={`${customWidth  ?  "select-b" : ""}`}
+                  />
+                  :
+                  <input
+                    min={0}
+                    type="number"
+                    placeholder="Custom Height"
+                    value={customHeight}
+                    onChange={handleCustomHeightChange}
+                    className={`${customHeight  ?  "select-b" : ""}`}
+                  />
+                </div>
               </div>
 
               <div className="file_type">
-                  <p>File Type</p>
-                  <span 
-                    onClick={() =>(setFormat(()=>"jpg"))}
-                    className={`${format == "jpg" ?  "select-b" : ""}`}
-                  >
-                    JPG
-                  </span>
-                  <span 
-                    onClick={() =>(setFormat(()=>"png"))} 
-                    className={`${format == "png" ?  "select-b" : ""}`}
-                  >
-                    PNG
-                  </span>
-
+                <p>File Type</p>
+                <span 
+                  onClick={() =>(setFormat(()=>"jpg"))}
+                  className={`${format == "jpg" ?  "select-b" : ""}`}
+                >
+                  JPG
+                </span>
+                <span 
+                  onClick={() =>(setFormat(()=>"png"))} 
+                  className={`${format == "png" ?  "select-b" : ""}`}
+                >
+                  PNG
+                </span>
               </div>          
 
               <div className="compression">
-                  <p>Compression</p>
-                  <label htmlFor="compression" className='custom_compression'>
-                      <input
-                          name='compression'
-                          type="range"
-                          min="0"
-                          max="100"
-                          value={compression}
-                          onChange={(e) => setCompression(Number(e.target.value))}
-                      />
-                      {compression}
+                <p>Compression</p>
+                <label htmlFor="compression" className='custom_compression'>
+                  <input
+                    name='compression'
+                    type="range"
+                    min="0"
+                    max="100"
+                    value={compression}
+                    onChange={(e) => setCompression(Number(e.target.value))}
+                  />
+                    {compression}
                   </label>
               </div>
 
               <div className="aspect_ratio">
                   <p>Aspect Ratio</p>
-                  
                   <span 
                     onClick={() => {setAspectRatio(()=>"No Change");setDimensions(()=>({width:0,height:0}))}}
                     className={`${aspectRatio == "No Change" ?  "select-b" : ""}`}
@@ -374,25 +371,25 @@ const IndexPage = () => {
                     16:9
                   </span>
                   <div className="custom_ratio">
-                      <input
-                        min={0}
-                        type="number"
-                        name="width"
-                        placeholder="0"
-                        value={ dimensions.width > 0 ? dimensions.width : ""  }
-                        onChange={handleInputChange}
-                        className={`${dimensions.width  ?  "select-b" : ""}`}
-                      />
-                      /
-                      <input
-                        min={0}
-                        type="number"
-                        name="height"
-                        placeholder="0"
-                        value={ dimensions.height > 0 ? dimensions.height : ""  }
-                        onChange={handleInputChange}
-                        className={`${dimensions.height  ?  "select-b" : ""}`}
-                      />
+                    <input
+                      min={0}
+                      type="number"
+                      name="width"
+                      placeholder="0"
+                      value={ dimensions.width > 0 ? dimensions.width : ""  }
+                      onChange={handleInputChange}
+                      className={`${dimensions.width  ?  "select-b" : ""}`}
+                    />
+                    /
+                    <input
+                      min={0}
+                      type="number"
+                      name="height"
+                      placeholder="0"
+                      value={ dimensions.height > 0 ? dimensions.height : ""  }
+                      onChange={handleInputChange}
+                      className={`${dimensions.height  ?  "select-b" : ""}`}
+                    />
                   </div>
               </div>
 

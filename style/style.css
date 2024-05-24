@@ -3,12 +3,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-input{
-    
-}
-
-
-
 
 html,body{
     width: 100%;
@@ -74,7 +68,6 @@ html,body{
         }
     }
 }
-
 
 .img_customization{
     padding: 25px;
