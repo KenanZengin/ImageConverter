@@ -39,7 +39,7 @@ const HomePage = () => {
             </Link>
           </div>
           <div className="img_content">
-            <Image src={img3} width={500} height={350} alt="randomImg" priority={false} />
+            <Image src={img3} width={500} height={350}  alt="randomImg" priority={false} />
             <p>Original size: 1000 x 667 </p>
             <Link href={"/photos?photoid=3"}>
               Go picture customization
