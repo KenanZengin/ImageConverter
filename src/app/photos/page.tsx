@@ -187,6 +187,7 @@ const IndexPage = () => {
         const sizeInMB = (sizeInBytes / 1024 / 1024).toFixed(2);
         setNewFormat(() => format)
         setProcessedSize(Number(sizeInMB));
+
       },
       'base64'
     );
@@ -194,6 +195,7 @@ const IndexPage = () => {
   };
 
   const handleDownload = () => {
+
     if (output && outputName) {
 
       const link = document.createElement('a');
@@ -244,10 +246,8 @@ const IndexPage = () => {
   }
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-
+    setDimensions(()=>({...dimensions,[name]: 1}));
     const { name, value } = event.target;
-    setResolution(()=>({width:0,height:0}));
-
     setAspectRatio(()=>"")
     if(Number(value) < 1){
       setDimensions(()=>({...dimensions,[name]: 1}));
@@ -308,6 +308,7 @@ const IndexPage = () => {
                         onChange={handleCustomWidthChange}
                         className={`${customWidth  ?  "select-b" : ""}`}
                       />
+                      :
                       <input
                           min={0}
                           type="number"
@@ -378,16 +379,17 @@ const IndexPage = () => {
                         type="number"
                         name="width"
                         placeholder="0"
-                        value={dimensions.width}
+                        value={ dimensions.width > 0 ? dimensions.width : ""  }
                         onChange={handleInputChange}
                         className={`${dimensions.width  ?  "select-b" : ""}`}
                       />
+                      /
                       <input
                         min={0}
                         type="number"
                         name="height"
                         placeholder="0"
-                        value={dimensions.height}
+                        value={ dimensions.height > 0 ? dimensions.height : ""  }
                         onChange={handleInputChange}
                         className={`${dimensions.height  ?  "select-b" : ""}`}
                       />

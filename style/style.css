@@ -158,7 +158,9 @@ html,body{
                     }
                     .custom_width,.custom_ratio{
                         display: flex;
+                        align-items: center;
                         gap: 10px;
+
                         input{
                             width: 50%;
                             padding: 8px;
@@ -167,6 +169,8 @@ html,body{
                         input[type="number"]:focus,input[type="number"]:focus-visible{
                             border-color: #F3D0D7;
                             border: 2px solid #F3D0D7;
+                            box-shadow: #F3D0D7 0px 7px 29px 0px;
+
                         }
                     }
                     .custom_compression{
@@ -174,8 +178,12 @@ html,body{
                             accent-color: #776B5D;
                         }
                     }   
-                    
+                    .select-b{
+                        border: 2px solid rgb(100, 100, 111) !important;
+                        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                    }
                 }
+               
                 button{
                     padding: 8px 0;
                     outline: 0;
@@ -241,7 +249,3 @@ html,body{
     }
 }
 
-.select-b{
-    border: 2px solid rgb(100, 100, 111) !important;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-}
